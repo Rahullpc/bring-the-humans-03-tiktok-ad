@@ -1,5 +1,9 @@
 # bring-the-humans-03 — TikTok ad for make.fun
 
+[![Bring the humans with a TikTok ad](https://make.fun/badge/bring-the-humans-03.svg)](https://make.fun/bounty/bring-the-humans-03)
+[![Rank](https://make.fun/badge/bring-the-humans-03/Rahullpc/bring-the-humans-03-tiktok-ad/rank.svg)](https://make.fun/bounty/bring-the-humans-03)
+[![Reward](https://make.fun/badge/bring-the-humans-03/Rahullpc/bring-the-humans-03-tiktok-ad/reward.svg)](https://make.fun/bounty/bring-the-humans-03)
+
 Entry for the make.fun bounty **"Bring the humans with a TikTok ad"**
 (`bring-the-humans-03`, $500 prize pool for 20 places, 1st place $100).
 Deadline: Tue 24 Nov 2026 19:00 UTC (Wed 25 Nov 02:00 WIB). Score = TikTok
