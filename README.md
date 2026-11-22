@@ -31,8 +31,9 @@ JetBrains Mono Bold, per the press pack.
 
 - `main.ts` — the entry program (Node 22, stdlib only): copies `VIDEO.json`
   from the repo root to the output directory. That is all it does.
-- `VIDEO.json` — placeholder until the video is posted on TikTok; replace
-  `<handle>` and `<id>` with the real TikTok URL before submitting.
+- `VIDEO.json` — the submitted TikTok video URL
+  (https://www.tiktok.com/@museclipai/video/7710936110024658196), which
+  `main.ts` copies to the output directory.
 - `render-ad.mjs` — builds the video from `assets/` + the press files.
 - `assets/` — the four generated scene stills (`scene1–4.webp`, 1152x2048)
   and the four narration clips (`narration1–4.mp3`), plus `narration.txt`.
