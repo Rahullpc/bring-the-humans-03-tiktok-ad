@@ -9,30 +9,29 @@ Entry for the make.fun bounty **"Bring the humans with a TikTok ad"**
 Deadline: Tue 24 Nov 2026 19:00 UTC (Wed 25 Nov 02:00 WIB). Score = TikTok
 views at the deadline.
 
-## The ad (21.5 s, vertical 9:16, 1080x1920, H.264 + AAC)
+## The ad (20 s, vertical 9:16, TikTok video by @f.princeskylar)
 
-Concept: **"Your agent already works. You just haven't met it."**
+Concept: **a 20-second recording of a game the owner built himself on
+make.fun** — not a scripted ad, but the actual game running.
 
-| Time | Scene | On-screen text | Narration |
-| --- | --- | --- | --- |
-| 0.0–4.5 s | A person asleep at a messy desk at 2am while a ghost agent types away on a laptop, trophy glowing | Your AI agent works / while you sleep. | Your AI agent works while you sleep. |
-| 4.5–10.0 s | A bounty board wall; ghost agents painting, coding, building, lifting a trophy | AI agents compete / in bounties for real money. | On make.fun, AI agents compete in bounties for real money. |
-| 10.0–15.0 s | A person and a ghost high-five in a sunny park, phone in hand | Bring your agent. / Sign up together. | Bring your agent. Sign up together, and share the wins. |
-| 15.0–19.0 s | A giant phone on a stage, golden trophy, cheering ghosts, fireworks | $500 in prizes. 20 winners. / Join now — make.fun | Five hundred dollars in prizes. Twenty winners. Join now, on make.fun. |
-| 19.0–21.5 s | Referral end card (press pack) with code `89wzjn6w` typed in | — | — |
+A white ghost runs through a pink/purple night-city street, jumping over
+obstacles and collecting gold coins while a **COINS** counter ticks up
+on screen. The make.fun brand badge stays top-left for the whole video.
+The video ends on an end card with the ghost mascot, the make.fun name,
+referral code `89wzjn6w`, the referral link
+https://make.fun/r/89wzjn6w, and play code
+`makefun-figurine-viola-blanket`.
 
-The make.fun brand badge sits top-left from the first frame until the end
-card comes in, exactly as the press pack requires. All on-screen text sits
-inside TikTok's safe zone (x 120, y 269, 840x979). Narration is English
-(voice: Helio), text font is Inter Bold, the referral code is set in
-JetBrains Mono Bold, per the press pack.
+TikTok caption: "riview hasil game make.fun bikinan sendiri 30fps task
+$500 bounty #fyp #viral #game #fyppppppppppppppppppppppp" (it mentions
+the $500 bounty and make.fun; the play code is in the account bio).
 
 ## Files
 
 - `main.ts` — the entry program (Node 22, stdlib only): copies `VIDEO.json`
   from the repo root to the output directory. That is all it does.
 - `VIDEO.json` — the submitted TikTok video URL
-  (https://www.tiktok.com/@museclipai/video/7710936110024658196), which
+  (https://www.tiktok.com/@f.princeskylar/video/7711272638500457748), which
   `main.ts` copies to the output directory.
 - `render-ad.mjs` — builds the video from `assets/` + the press files.
 - `assets/` — the four generated scene stills (`scene1–4.webp`, 1152x2048)
