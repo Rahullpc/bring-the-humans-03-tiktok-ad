@@ -1,56 +1,62 @@
 // main.ts — entry program for the bring-the-humans-03 make.fun entry.
 //
-// What it does, and nothing more: it copies VIDEO.json from the make.fun
-// bot directory into the output directory, so the grader can find the
-// submitted TikTok video URL there.
+// It copies VIDEO.json (the submitted TikTok video URL) from the bot
+// directory into the output directory, so the grader can read it there:
 //
 //   MAKEFUN_BOT_DIR=. MAKEFUN_OUTPUT_DIR=out node main.ts
 //   -> out/VIDEO.json
 //
-// Node 22, standard library only. No dependencies, no network, no ffmpeg.
+// Node 22+, standard library only. No dependencies, no network access.
 
-import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { copyFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 
-const BOT_DIR = process.env.MAKEFUN_BOT_DIR ?? '.';
-const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? 'out';
-
-const source = resolve(join(BOT_DIR, 'VIDEO.json'));
-const destination = resolve(join(OUTPUT_DIR, 'VIDEO.json'));
-
-if (!existsSync(source)) {
-  console.error(`main.ts: VIDEO.json not found in ${BOT_DIR} (${source})`);
+function fail(message: string): never {
+  console.error(`main.ts: ${message}`);
   process.exit(1);
 }
 
-// The grader reads the copied file, so refuse to hand it a broken one:
-// VIDEO.json must be valid JSON and must name a real TikTok video URL.
-let parsed: unknown;
+const botDir = process.env.MAKEFUN_BOT_DIR ?? ".";
+const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? "out";
+
+const inputPath = resolve(join(botDir, "VIDEO.json"));
+const outputPath = resolve(join(outputDir, "VIDEO.json"));
+
+if (!existsSync(inputPath)) {
+  fail(`VIDEO.json not found under ${botDir} (looked at ${inputPath})`);
+}
+
+let data: unknown;
 try {
-  parsed = JSON.parse(readFileSync(source, 'utf8'));
+  data = JSON.parse(readFileSync(inputPath, "utf8"));
 } catch {
-  console.error(`main.ts: ${source} is not valid JSON`);
-  process.exit(1);
+  fail(`${inputPath} is not valid JSON`);
 }
-const videoUrl =
-  typeof parsed === 'object' && parsed !== null
-    ? (parsed as Record<string, unknown>).video_url ??
-      (parsed as Record<string, unknown>).url
+
+const url =
+  typeof data === "object" && data !== null
+    ? (data as Record<string, unknown>).url
     : undefined;
-if (typeof videoUrl !== 'string' || !videoUrl.includes('tiktok.com')) {
-  console.error(
-    `main.ts: ${source} does not contain a TikTok video URL (video_url)`,
+
+if (
+  typeof url !== "string" ||
+  url.trim().length === 0 ||
+  url.trim() !== url ||
+  !url.includes("tiktok.com")
+) {
+  fail(
+    `${inputPath} has no usable TikTok video URL in its "url" field ` +
+      `(empty, whitespace-padded, or not a tiktok.com link)`,
   );
-  process.exit(1);
 }
 
-mkdirSync(OUTPUT_DIR, { recursive: true });
-copyFileSync(source, destination);
+mkdirSync(outputDir, { recursive: true });
+copyFileSync(inputPath, outputPath);
 
-// Confirm the copy actually landed and matches the source byte for byte.
-if (readFileSync(destination, 'utf8') !== readFileSync(source, 'utf8')) {
-  console.error(`main.ts: copy verification failed for ${destination}`);
-  process.exit(1);
+const copied = readFileSync(outputPath, "utf8");
+const original = readFileSync(inputPath, "utf8");
+if (copied !== original) {
+  fail(`copied file ${outputPath} does not match ${inputPath} byte for byte`);
 }
 
-console.log(`main.ts: copied ${source} -> ${destination} (${videoUrl})`);
+console.log(`main.ts: copied ${inputPath} -> ${outputPath} (${url})`);
