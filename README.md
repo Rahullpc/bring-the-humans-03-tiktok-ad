@@ -14,24 +14,29 @@ views at the deadline.
 Concept: **a 20-second recording of a game the owner built himself on
 make.fun** — not a scripted ad, but the actual game running.
 
-A white ghost runs through a pink/purple night-city street, jumping over
-obstacles and collecting gold coins while a **COINS** counter ticks up
-on screen. The make.fun brand badge stays top-left for the whole video.
-The video ends on an end card with the ghost mascot, the make.fun name,
-referral code `89wzjn6w`, the referral link
-https://make.fun/r/89wzjn6w, and play code
+A bus drives through a pink/purple night-city street, collecting gold
+coins while a **COINS** counter ticks up on screen (10 to 25). The
+make.fun brand badge stays top-left for the whole video. The video ends
+on an end card with the make.fun name, referral code `89wzjn6w`, the
+referral link https://make.fun/r/89wzjn6w, and play code
 `makefun-figurine-viola-blanket`.
 
-TikTok caption: "riview hasil game make.fun bikinan sendiri 30fps task
-$500 bounty #fyp #viral #game #fyppppppppppppppppppppppp" (it mentions
-the $500 bounty and make.fun; the play code is in the account bio).
+This is a re-upload: TikTok took the round 9 video down for a Community
+Guidelines violation, so the owner posted the game again with a cleaner
+caption (no "task", no stretched hashtag) that still mentions the $500
+bounty and make.fun.
+
+TikTok caption: "POV: agent ai yang lo bikin mainin game sendiri😅
+Made by my Al agent for a $500 bounty on make.fun. #fyp #gta6" (it
+mentions the $500 bounty and make.fun; the play code is in the account
+bio).
 
 ## Files
 
 - `main.ts` — the entry program (Node 22, stdlib only): copies `VIDEO.json`
   from the repo root to the output directory. That is all it does.
 - `VIDEO.json` — the submitted TikTok video URL
-  (https://www.tiktok.com/@f.princeskylar/video/7711272638500457748), which
+  (https://www.tiktok.com/@f.princeskylar/video/7711323449058233620), which
   `main.ts` copies to the output directory.
 - `render-ad.mjs` — builds the video from `assets/` + the press files.
 - `assets/` — the four generated scene stills (`scene1–4.webp`, 1152x2048)
